@@ -1,0 +1,33 @@
+{
+  "name": "a15lam/jarvis",
+  "description": "A personal IOT rule engine.",
+  "homepage": "https://a15lam.github.io/jarvis/",
+  "keywords": [
+    "Wemo",
+    "IOT",
+    "sonoff",
+    "rule",
+    "engine"
+  ],
+  "license": [
+    "Apache-2.0"
+  ],
+  "authors": [
+    {
+      "name": "Arif Islam",
+      "email": "areef.islam@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=5.5",
+    "a15lam/workspace": "dev-develop as dev-master",
+    "a15lam/php-wemo": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "a15lam\\Jarvis\\": "src/"
+    }
+  }
+}

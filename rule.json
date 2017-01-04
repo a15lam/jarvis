@@ -1,0 +1,13 @@
+{
+  "rule":[
+    {
+      "control":{
+        "time":{
+          "on":"SUNSET",
+          "off":"SUNRISE"
+        }
+      },
+      "device":["garden"]
+    }
+  ]
+}
