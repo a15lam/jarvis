@@ -1,13 +1,11 @@
-{
-  "rule":[
-    {
-      "control":{
-        "time":{
-          "on":"SUNSET",
-          "off":"SUNRISE"
-        }
-      },
-      "device":["garden"]
-    }
-  ]
-}
+[
+  {
+    "control":{
+      "time":{
+        "on":"1:31AM",
+        "off":"1:32AM"
+      }
+    },
+    "device":"coco_light"
+  }
+]

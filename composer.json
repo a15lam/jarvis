@@ -23,7 +23,7 @@
   "require": {
     "php": ">=5.5",
     "a15lam/workspace": "dev-develop as dev-master",
-    "a15lam/php-wemo": "dev-master"
+    "a15lam/php-wemo": "dev-develop as dev-master"
   },
   "autoload": {
     "psr-4": {
