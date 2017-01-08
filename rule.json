@@ -1,16 +1,6 @@
 [
   {
     "control":{
-      "day":["mon", "tuesday", "wednesday"],
-      "time":{
-        "on":"SUNSET",
-        "off":"SUNRISE"
-      }
-    },
-    "device":"garage_door"
-  },
-  {
-    "control":{
       "time":{
         "on":"SUNSET",
         "off":"SUNRISE"
@@ -22,6 +12,30 @@
         "player":"TV UN46C8000_USA"
       }
     },
-    "device":"media_room"
+    "device":["media_room"]
+  },
+  {
+    "control":{
+      "time":{
+        "on":"SUNSET",
+        "off":"SUNRISE"
+      },
+      "plex":{
+        "host": "192.168.1.145",
+        "port": 32400,
+        "dim_on_pause":40,
+        "player":"TV UN55F6300"
+      }
+    },
+    "device":["living_room"]
+  },
+  {
+    "control":{
+      "time": {
+        "on":"SUNSET",
+        "off":"SUNRISE"
+      }
+    },
+    "device":"garden"
   }
 ]

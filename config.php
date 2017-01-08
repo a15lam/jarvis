@@ -1,6 +1,6 @@
 <?php
 return [
-    'debug'     => true,
+    'debug'     => false,
     'timezone'  => 'America/New_York',
     'latitude'  => 34.1939770,      //North
     'longitude' => -84.2247560,     //West
