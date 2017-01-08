@@ -20,7 +20,7 @@ class Engine
 
     protected $deviceReload = false;
 
-    protected $plexInit = false;
+    protected $plexInit = [];
 
     public function __construct($deviceReload = false, array $rules = [])
     {
@@ -111,7 +111,7 @@ class Engine
 
     public function run()
     {
-        foreach ($this->rules as $rule) {
+        foreach ($this->rules as $key => $rule) {
             $controls = ArrayFunc::get($rule, 'control');
             $devices = ArrayFunc::get($rule, 'device');
             if (!is_array($devices)) {
@@ -136,23 +136,23 @@ class Engine
                         if ($this->debug) {
                             echo "Media is playing on " . $plex['player'] . ". Turning off lights." . PHP_EOL;
                         }
-                        $this->plexInit = true;
+                        $this->plexInit[$key] = true;
                         $this->turnOffDevices($devices);
                     } elseif ($plexStatus === PlexClient::PAUSED) {
                         if ($this->debug) {
                             echo "Media is paused on " . $plex['player'] . ". Turning on (dim) lights." . PHP_EOL;
                         }
-                        $this->plexInit = true;
+                        $this->plexInit[$key] = true;
                         $this->dimLights($devices, ArrayFunc::get($plex, 'dim_on_pause', 40));
                     } elseif ($plexStatus === PlexClient::STOPPED) {
                         if ($this->debug) {
                             echo "No media playing." . PHP_EOL;
                         }
-                        if ($this->plexInit === true) {
+                        if (ArrayFunc::get($this->plexInit, $key) === true) {
                             if ($this->debug) {
                                 echo "Media is stopped on " . $plex['player'] . ". Turning on lights." . PHP_EOL;
                             }
-                            $this->plexInit = false;
+                            $this->plexInit[$key] = false;
                             $this->turnOnDevices($devices);
                         }
                     } else {
