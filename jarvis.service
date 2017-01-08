@@ -1,0 +1,10 @@
+[unit]
+description="Personal IOT rule engine for controlling residential devices based on pre-configured rules."
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/php -f /home/arif/jarvis/daemon.php
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
