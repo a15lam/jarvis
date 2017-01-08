@@ -27,7 +27,8 @@
   },
   "autoload": {
     "psr-4": {
-      "a15lam\\Jarvis\\": "src/"
+      "a15lam\\Jarvis\\": "src/",
+      "a15lam\\Workspace\\": "workbench/repos/workspace/src/"
     }
   }
 }

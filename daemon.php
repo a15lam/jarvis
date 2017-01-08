@@ -8,13 +8,17 @@ $int = \a15lam\Jarvis\Workspace::config()->get('run_interval', 3);
 
 $engine = new \a15lam\Jarvis\Engine($refresh);
 
-while(true) {
-    $engine->run();
+while (true) {
+    try {
+        $engine->run();
 
-    if($debug) {
-        echo "NOW: " . date('Y-m-d H:i:s', time()) . PHP_EOL;
+        if ($debug) {
+            echo "=======================[ RUN:" . date('Y-m-d H:i:s', time()) . " ]=======================" . PHP_EOL;
+        }
+    } catch (\Exception $e) {
+        \a15lam\Jarvis\Workspace::log()->error('Error occurred: ' . $e->getMessage());
+        throw $e;
     }
-
     sleep($int);
 }
 

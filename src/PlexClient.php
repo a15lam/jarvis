@@ -2,7 +2,9 @@
 
 namespace a15lam\Jarvis;
 
+use a15lam\Workspace\Utility\ArrayFunc;
 use a15lam\Workspace\Utility\DataFormat;
+use a15lam\Jarvis\Workspace as WS;
 
 class PlexClient
 {
@@ -14,11 +16,17 @@ class PlexClient
      * PMS API to use.
      */
     const API = 'status/sessions';
-
+    /**
+     * Media stopped status
+     */
     const STOPPED = 0;
-
+    /**
+     * Media playing status
+     */
     const PLAYING = 1;
-
+    /**
+     * Media paused status
+     */
     const PAUSED = 2;
 
     /**
@@ -42,14 +50,13 @@ class PlexClient
         $api = static::API;
 
         if (is_array($config)) {
-            if (isset($config['host'])) {
-                $host = $config['host'];
-            } else {
+            $host = ArrayFunc::get($config, 'host');
+            if (empty($host)) {
                 throw new \Exception("PlexClient config is missing 'host'");
             }
 
-            $port = (isset($config['port'])) ? $config['port'] : static::PORT;
-            $api = (isset($config['api'])) ? $config['api'] : static::API;
+            $port = ArrayFunc::get($config, 'port', static::PORT);
+            $api = ArrayFunc::get($config, 'api', static::API);
         }
 
         $this->url = 'http://' . $host . ':' . $port . '/' . $api;
@@ -114,12 +121,18 @@ class PlexClient
                 return $out;
             }
         }
-
-        //WS::log()->debug("No status returned from Plex server. Probably no media is playing.");
+        WS::log()->debug("No status returned from Plex server. Probably no media is playing.");
 
         return null;
     }
 
+    /**
+     * Fetch media playback status for a player/client.
+     *
+     * @param static $playerName
+     *
+     * @return int
+     */
     public function getPlayerStatus($playerName)
     {
         $players = $this->getPlayers();
@@ -128,10 +141,15 @@ class PlexClient
             foreach ($players as $player) {
                 if ($playerName === $player['title']) {
                     if ($player['state'] === 'playing') {
+                        WS::log()->debug('Media playing on ' . $playerName);
+
                         return static::PLAYING;
                     } elseif ($player['state'] === 'paused') {
+                        WS::log()->debug('Media paused on ' . $playerName);
+
                         return static::PAUSED;
                     }
+                    WS::log()->debug('Media stopped or no media playing on ' . $playerName);
                 }
             }
         }

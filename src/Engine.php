@@ -10,18 +10,32 @@ use a15lam\Workspace\Utility\ArrayFunc;
 
 class Engine
 {
+    /** Sunset constant */
     const SUNSET = 'SUNSET';
 
+    /** Sunrise constant */
     const SUNRISE = 'SUNRISE';
 
+    /** @var array|null  */
     protected $rules = null;
 
+    /** @var bool  */
     protected $debug = false;
 
+    /** @var bool  */
     protected $deviceReload = false;
 
+    /** @var array  */
     protected $plexInit = [];
 
+    /**
+     * Engine constructor.
+     *
+     * @param bool  $deviceReload
+     * @param array $rules
+     *
+     * @throws \Exception
+     */
     public function __construct($deviceReload = false, array $rules = [])
     {
         $this->deviceReload = $deviceReload;
@@ -43,7 +57,14 @@ class Engine
         $this->debug = WS::config()->get('debug', false);
     }
 
-    protected function initRules($rules)
+    /**
+     * Initializes rules.
+     *
+     * @param array $rules
+     *
+     * @throws \Exception
+     */
+    protected function initRules(array $rules)
     {
         foreach ($rules as $k => $rule) {
             $control = ArrayFunc::get($rule, 'control');
@@ -74,18 +95,17 @@ class Engine
                 }
             }
         }
-
         $this->rules = $rules;
-
-        if ($this->debug) {
-            echo "Initialized rules." . PHP_EOL;
-        }
+        WS::log()->info('Initialized all rules.');
     }
 
+    /**
+     * Initializes devices per rule.
+     */
     protected function initDevices()
     {
         if ($this->deviceReload) {
-            Discovery::find(true);
+            Discovery::find(true);   // This caches all discovered devices locally.
         }
         foreach ($this->rules as $rule) {
             $devices = ArrayFunc::get($rule, 'device');
@@ -103,12 +123,12 @@ class Engine
                 }
             }
         }
-
-        if ($this->debug) {
-            echo "Initialized devices." . PHP_EOL;
-        }
+        WS::log()->info('Initialized devices.');
     }
 
+    /**
+     * Runs all rule checks (runs in a loop by daemon)
+     */
     public function run()
     {
         foreach ($this->rules as $key => $rule) {
@@ -122,55 +142,46 @@ class Engine
                 $day = ArrayFunc::get($controls, 'day');
                 $dayPass = $this->isDay($day);
                 $time = ArrayFunc::get($controls, 'time');
-                $timePass = $this->isTime($time);
+                $timePass = $this->isTime($time, $key);
                 $plex = ArrayFunc::get($controls, 'plex');
 
-                // day and time check passes (true) if they are empty.
+                // Day and Time check passes (true) if they are empty.
                 if ($dayPass && $timePass) {
-                    if ($this->debug) {
-                        echo "Day and Time passes. " . PHP_EOL;
-                    }
+                    WS::log()->debug('Day and time passed for rule ' . $key);
+
                     $plexStatus = $this->getPlexStatus($plex);
 
                     if ($plexStatus === PlexClient::PLAYING) {
-                        if ($this->debug) {
-                            echo "Media is playing on " . $plex['player'] . ". Turning off lights." . PHP_EOL;
-                        }
                         $this->plexInit[$key] = true;
                         $this->turnOffDevices($devices);
                     } elseif ($plexStatus === PlexClient::PAUSED) {
-                        if ($this->debug) {
-                            echo "Media is paused on " . $plex['player'] . ". Turning on (dim) lights." . PHP_EOL;
-                        }
                         $this->plexInit[$key] = true;
                         $this->dimLights($devices, ArrayFunc::get($plex, 'dim_on_pause', 40));
                     } elseif ($plexStatus === PlexClient::STOPPED) {
-                        if ($this->debug) {
-                            echo "No media playing." . PHP_EOL;
-                        }
                         if (ArrayFunc::get($this->plexInit, $key) === true) {
-                            if ($this->debug) {
-                                echo "Media is stopped on " . $plex['player'] . ". Turning on lights." . PHP_EOL;
-                            }
                             $this->plexInit[$key] = false;
                             $this->turnOnDevices($devices);
                         }
                     } else {
-                        if ($this->debug) {
-                            echo "No plex rule." . PHP_EOL;
-                        }
+                        WS::log()->debug('No plex control for rule ' . $key);
                         $this->turnOnDevices($devices);
                     }
                 } else {
-                    if ($this->debug) {
-                        echo "Day and Time DO NOT pass. " . PHP_EOL;
-                    }
+                    WS::log()->debug("Day and Time DO NOT pass for rule " . $key);
                     $this->turnOffDevices($devices);
                 }
             }
         }
     }
 
+    /**
+     * Checks to see if Day rule matches.
+     * If no day rule specified, returns true.
+     *
+     * @param string|array $day
+     *
+     * @return bool
+     */
     protected function isDay($day)
     {
         if (empty($day)) {
@@ -193,7 +204,17 @@ class Engine
         return false;
     }
 
-    protected function isTime($time)
+    /**
+     * Checks to see if Time rule matches.
+     * If no time rule specified, returns true.
+     *
+     * @param mixed|array $time
+     * @param int $ruleNum
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    protected function isTime($time, $ruleNum)
     {
         if (empty($time)) {
             return true;
@@ -217,9 +238,7 @@ class Engine
                 return false;
             }
         } else {
-            if ($this->debug) {
-                echo "Overnight time period. " . PHP_EOL;
-            }
+            WS::log()->debug('Handling overnight time period for rule ' . $ruleNum);
 
             if (($currTime >= $onTime || $currTime <= $offTime)) {
                 return true;
@@ -229,17 +248,28 @@ class Engine
         }
     }
 
+    /**
+     * Fetches media playback status for a plex rule control.
+     *
+     * @param array|mixed $plex
+     *
+     * @return bool|int
+     */
     protected function getPlexStatus($plex)
     {
         if (empty($plex)) {
             return false;
         }
-
         $plexClient = new PlexClient($plex);
 
         return $plexClient->getPlayerStatus(ArrayFunc::get($plex, 'player'));
     }
 
+    /**
+     * Turns on supplied devices
+     *
+     * @param array $devices
+     */
     protected function turnOnDevices(array $devices)
     {
         foreach ($devices as $device) {
@@ -247,9 +277,7 @@ class Engine
                 /** @var DeviceInterface $d */
                 $d = $this->getDevice($device);
                 if ($d !== false) {
-                    if ($this->debug) {
-                        echo "Turning on [" . $device . "]" . PHP_EOL;
-                    }
+                    WS::log()->info("Turning on [" . $device . "]");
                     if ($d->isDimmable()) {
                         $d->dim(100);
                     }
@@ -261,6 +289,11 @@ class Engine
         }
     }
 
+    /**
+     * Turns off supplied devices.
+     *
+     * @param array $devices
+     */
     protected function turnOffDevices(array $devices)
     {
         foreach ($devices as $device) {
@@ -268,9 +301,7 @@ class Engine
                 /** @var DeviceInterface $d */
                 $d = $this->getDevice($device);
                 if ($d !== false) {
-                    if ($this->debug) {
-                        echo "Turning off [" . $device . "]" . PHP_EOL;
-                    }
+                    WS::log()->info("Turning off [" . $device . "]");
                     $d->Off();
                     $this->{$device} = false;
                 }
@@ -278,6 +309,12 @@ class Engine
         }
     }
 
+    /**
+     * Dims supplied lights to specified brightness.
+     *
+     * @param array $devices
+     * @param int   $percent
+     */
     protected function dimLights(array $devices, $percent = 40)
     {
         foreach ($devices as $device) {
@@ -286,14 +323,10 @@ class Engine
                 $d = $this->getDevice($device);
                 if ($d !== false) {
                     if ($d->isDimmable()) {
-                        if ($this->debug) {
-                            echo "Dimming [" . $device . "] at " . $percent . "%" . PHP_EOL;
-                        }
+                        WS::log()->info("Dimming [" . $device . "] at " . $percent . "%");
                         $d->dim($percent);
                     } else {
-                        if ($this->debug) {
-                            echo "Turning on [" . $device . "]" . PHP_EOL;
-                        }
+                        WS::log()->info("Dimming not supported. Turning on [" . $device . "]");
                         $d->On();
                     }
                     $this->{$device} = true;
@@ -302,6 +335,11 @@ class Engine
         }
     }
 
+    /**
+     * Returns the local sunrise time based on config.
+     *
+     * @return false|string
+     */
     protected function getSunriseTime()
     {
         $latitude = WS::config()->get('latitude');
@@ -313,6 +351,11 @@ class Engine
             strtotime(date_sunrise(time(), SUNFUNCS_RET_STRING, $latitude, $longitude, $zenith, $tzoffset)));
     }
 
+    /**
+     * Returns the local sunset time based on config.
+     *
+     * @return false|string
+     */
     protected function getSunsetTime()
     {
         $latitude = WS::config()->get('latitude');
@@ -324,6 +367,14 @@ class Engine
             strtotime(date_sunset(time(), SUNFUNCS_RET_STRING, $latitude, $longitude, $zenith, $tzoffset)));
     }
 
+    /**
+     * Fetches a device object.
+     *
+     * @param $name
+     *
+     * @return bool|DeviceInterface
+     * @throws \Exception
+     */
     private function getDevice($name)
     {
         try {
@@ -337,9 +388,16 @@ class Engine
         }
     }
 
+    /**
+     * Dumps all rules when debug mode is on.
+     *
+     * @return array|null
+     */
     public function dumpRules()
     {
-        return $this->rules;
+        if($this->debug) {
+            return $this->rules;
+        }
     }
 }
 
