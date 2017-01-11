@@ -16,17 +16,20 @@ class Engine
     /** Sunrise constant */
     const SUNRISE = 'SUNRISE';
 
-    /** @var array|null  */
+    /** @var array|null */
     protected $rules = null;
 
-    /** @var bool  */
+    /** @var bool */
     protected $debug = false;
 
-    /** @var bool  */
+    /** @var bool */
     protected $deviceReload = false;
 
-    /** @var array  */
+    /** @var array */
     protected $plexInit = [];
+
+    /** @var array */
+    protected $plexStatus = [];
 
     /**
      * Engine constructor.
@@ -151,21 +154,36 @@ class Engine
 
                     $plexStatus = $this->getPlexStatus($plex);
 
+                    WS::log()->debug('Last plex status for rule ' .
+                        $key .
+                        ':' .
+                        ArrayFunc::get($this->plexStatus, $key));
                     if ($plexStatus === PlexClient::PLAYING) {
+                        $force = false;
+                        if (ArrayFunc::get($this->plexStatus, $key) === PlexClient::STOPPED) {
+                            WS::log()->debug('Plex status went from STOPPED to PLAYING. Forcing device turn off.');
+                            $force = true;
+                        }
                         $this->plexInit[$key] = true;
-                        $this->turnOffDevices($devices);
+                        $this->turnOffDevices($devices, $force);
                     } elseif ($plexStatus === PlexClient::PAUSED) {
                         $this->plexInit[$key] = true;
                         $this->dimLights($devices, ArrayFunc::get($plex, 'dim_on_pause', 40));
                     } elseif ($plexStatus === PlexClient::STOPPED) {
                         if (ArrayFunc::get($this->plexInit, $key) === true) {
+                            $force = false;
+                            if (ArrayFunc::get($this->plexStatus, $key) === PlexClient::PAUSED) {
+                                WS::log()->debug('Plex status went from PAUSED to STOPPED. Forcing device turn on.');
+                                $force = true;
+                            }
                             $this->plexInit[$key] = false;
-                            $this->turnOnDevices($devices);
+                            $this->turnOnDevices($devices, $force);
                         }
                     } else {
                         WS::log()->debug('No plex control for rule ' . $key);
                         $this->turnOnDevices($devices);
                     }
+                    $this->plexStatus[$key] = $plexStatus;
                 } else {
                     WS::log()->debug("Day and Time DO NOT pass for rule " . $key);
                     $this->turnOffDevices($devices);
@@ -209,7 +227,7 @@ class Engine
      * If no time rule specified, returns true.
      *
      * @param mixed|array $time
-     * @param int $ruleNum
+     * @param int         $ruleNum
      *
      * @return bool
      * @throws \Exception
@@ -269,11 +287,12 @@ class Engine
      * Turns on supplied devices
      *
      * @param array $devices
+     * @param bool  $force
      */
-    protected function turnOnDevices(array $devices)
+    protected function turnOnDevices(array $devices, $force = false)
     {
         foreach ($devices as $device) {
-            if (@!$this->{$device}) {
+            if (@!$this->{$device} || $force === true) {
                 /** @var DeviceInterface $d */
                 $d = $this->getDevice($device);
                 if ($d !== false) {
@@ -293,11 +312,12 @@ class Engine
      * Turns off supplied devices.
      *
      * @param array $devices
+     * @param bool  $force
      */
-    protected function turnOffDevices(array $devices)
+    protected function turnOffDevices(array $devices, $force = false)
     {
         foreach ($devices as $device) {
-            if (@$this->{$device}) {
+            if (@$this->{$device} || $force === true) {
                 /** @var DeviceInterface $d */
                 $d = $this->getDevice($device);
                 if ($d !== false) {
@@ -395,7 +415,7 @@ class Engine
      */
     public function dumpRules()
     {
-        if($this->debug) {
+        if ($this->debug) {
             return $this->rules;
         }
     }
