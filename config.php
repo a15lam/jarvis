@@ -1,11 +1,15 @@
 <?php
+use a15lam\Jarvis\Workspace as ws;
+use a15lam\Workspace\Utility\Logger;
+
 return [
-    'debug'        => false,
-    'log_level'    => \a15lam\Workspace\Utility\Logger::INFO,
-    'timezone'     => 'America/New_York',
-    'latitude'     => 34.1939770,      //North
-    'longitude'    => -84.2247560,     //West
-    'zenith'       => 90 + (50 / 60),  // True sunrise/sunset
-    'rule_path'    => __DIR__ . DIRECTORY_SEPARATOR . 'rule.json',
-    'run_interval' => 3 // seconds;
+    'debug'        => ws::env('DEBUG', false),
+    'log_level'    => Logger::getLevelValue(ws::env('LOG_LEVEL', 'INFO')),
+    'log_path'     => ws::env('LOG_PATH', 'storage/logs/'),
+    'timezone'     => ws::env('TIME_ZONE', 'America/New_York'),
+    'latitude'     => ws::env('LATITUDE', 0),
+    'longitude'    => ws::env('LONGITUDE', 0),
+    'zenith'       => ws::env('ZENITH', 90 + (50 / 60)), // True sunrise/sunset
+    'rule_path'    => __DIR__ . DIRECTORY_SEPARATOR . ws::env('RULE_PATH', 'rule.json'),
+    'run_interval' => ws::env('RUN_INTERVAL', 3)  // Seconds.
 ];
