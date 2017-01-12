@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5f1b1e3bae44ef579c3c6249024da269",
+    "hash": "dd84371d3ac51d88cc8af262ad8e2d2c",
     "content-hash": "7e7fb865ef4dc52ee7d2cd84d91d9c1d",
     "packages": [
         {
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/a15lam/php-wemo.git",
-                "reference": "c93befcd0a0b22732334148a38f517756fa2e449"
+                "reference": "d3ddd21eef1060261144174f9266990184d55ad8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/a15lam/php-wemo/zipball/c93befcd0a0b22732334148a38f517756fa2e449",
-                "reference": "c93befcd0a0b22732334148a38f517756fa2e449",
+                "url": "https://api.github.com/repos/a15lam/php-wemo/zipball/d3ddd21eef1060261144174f9266990184d55ad8",
+                "reference": "d3ddd21eef1060261144174f9266990184d55ad8",
                 "shasum": ""
             },
             "require": {
@@ -49,7 +49,7 @@
                 "php-wemo",
                 "soap"
             ],
-            "time": "2016-12-10 01:37:40"
+            "time": "2017-01-12 19:32:19"
         },
         {
             "name": "a15lam/workspace",
@@ -57,12 +57,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/a15lam/workspace.git",
-                "reference": "18ec7e2389d6706eb0b7ba4f15ad5611ebbed6eb"
+                "reference": "7ee458fdb76ed25ea14c092fcf08643be4f79117"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/a15lam/workspace/zipball/18ec7e2389d6706eb0b7ba4f15ad5611ebbed6eb",
-                "reference": "18ec7e2389d6706eb0b7ba4f15ad5611ebbed6eb",
+                "url": "https://api.github.com/repos/a15lam/workspace/zipball/7ee458fdb76ed25ea14c092fcf08643be4f79117",
+                "reference": "7ee458fdb76ed25ea14c092fcf08643be4f79117",
                 "shasum": ""
             },
             "require": {
@@ -92,7 +92,7 @@
                 "framework",
                 "utility"
             ],
-            "time": "2017-01-11 05:47:22"
+            "time": "2017-01-12 19:31:16"
         },
         {
             "name": "clue/multicast-react",
