@@ -57,12 +57,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/a15lam/workspace.git",
-                "reference": "7ee458fdb76ed25ea14c092fcf08643be4f79117"
+                "reference": "7a5b1c0b1594163d853bec7bf4ec03b47c76c8f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/a15lam/workspace/zipball/7ee458fdb76ed25ea14c092fcf08643be4f79117",
-                "reference": "7ee458fdb76ed25ea14c092fcf08643be4f79117",
+                "url": "https://api.github.com/repos/a15lam/workspace/zipball/7a5b1c0b1594163d853bec7bf4ec03b47c76c8f7",
+                "reference": "7a5b1c0b1594163d853bec7bf4ec03b47c76c8f7",
                 "shasum": ""
             },
             "require": {
@@ -92,7 +92,7 @@
                 "framework",
                 "utility"
             ],
-            "time": "2017-01-12 19:31:16"
+            "time": "2017-01-12 19:53:53"
         },
         {
             "name": "clue/multicast-react",
