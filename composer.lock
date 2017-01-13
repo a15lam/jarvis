@@ -4,25 +4,70 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a7eec0c7bd99a531c3676163e6093d88",
-    "content-hash": "7e7fb865ef4dc52ee7d2cd84d91d9c1d",
+    "hash": "e4a50c79a9dcf84ebb0e7b672a4c93f3",
+    "content-hash": "3d2f4abebcc85619107e72dc198e0338",
     "packages": [
         {
-            "name": "a15lam/php-wemo",
-            "version": "dev-develop",
+            "name": "a15lam/php-iot",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/a15lam/php-wemo.git",
-                "reference": "d3ddd21eef1060261144174f9266990184d55ad8"
+                "url": "https://github.com/a15lam/php-iot.git",
+                "reference": "0372ca5c7a0f5c403316880824ccd6fdbeb605a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/a15lam/php-wemo/zipball/d3ddd21eef1060261144174f9266990184d55ad8",
-                "reference": "d3ddd21eef1060261144174f9266990184d55ad8",
+                "url": "https://api.github.com/repos/a15lam/php-iot/zipball/0372ca5c7a0f5c403316880824ccd6fdbeb605a4",
+                "reference": "0372ca5c7a0f5c403316880824ccd6fdbeb605a4",
                 "shasum": ""
             },
             "require": {
-                "a15lam/workspace": "dev-master",
+                "a15lam/php-wemo": "dev-master",
+                "a15lam/workspace": "0.1.0",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "a15lam\\PhpIot\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Arif Islam",
+                    "email": "areef.islam@gmail.com"
+                }
+            ],
+            "description": "PHP library for controlling household IoT devices.",
+            "homepage": "https://a15lam.github.io/php-iot/",
+            "keywords": [
+                "Wemo",
+                "iot",
+                "smart",
+                "sonoff"
+            ],
+            "time": "2017-01-13 05:07:23"
+        },
+        {
+            "name": "a15lam/php-wemo",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/a15lam/php-wemo.git",
+                "reference": "54dcb838d5b9beffdf775d0e8c0a93aa1d4871fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/a15lam/php-wemo/zipball/54dcb838d5b9beffdf775d0e8c0a93aa1d4871fc",
+                "reference": "54dcb838d5b9beffdf775d0e8c0a93aa1d4871fc",
+                "shasum": ""
+            },
+            "require": {
+                "a15lam/workspace": "~0.1.0",
                 "clue/ssdp-react": "dev-master",
                 "php": ">=5.6"
             },
@@ -49,20 +94,20 @@
                 "php-wemo",
                 "soap"
             ],
-            "time": "2017-01-12 19:32:19"
+            "time": "2017-01-13 04:48:17"
         },
         {
             "name": "a15lam/workspace",
-            "version": "dev-develop",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/a15lam/workspace.git",
-                "reference": "7a5b1c0b1594163d853bec7bf4ec03b47c76c8f7"
+                "reference": "8fce0460ca9ca149666c1b2a4a9e8cee59361f25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/a15lam/workspace/zipball/7a5b1c0b1594163d853bec7bf4ec03b47c76c8f7",
-                "reference": "7a5b1c0b1594163d853bec7bf4ec03b47c76c8f7",
+                "url": "https://api.github.com/repos/a15lam/workspace/zipball/8fce0460ca9ca149666c1b2a4a9e8cee59361f25",
+                "reference": "8fce0460ca9ca149666c1b2a4a9e8cee59361f25",
                 "shasum": ""
             },
             "require": {
@@ -92,7 +137,7 @@
                 "framework",
                 "utility"
             ],
-            "time": "2017-01-12 19:53:53"
+            "time": "2017-01-13 01:40:22"
         },
         {
             "name": "clue/multicast-react",
@@ -590,24 +635,10 @@
         }
     ],
     "packages-dev": [],
-    "aliases": [
-        {
-            "alias": "dev-master",
-            "alias_normalized": "9999999-dev",
-            "version": "dev-develop",
-            "package": "a15lam/workspace"
-        },
-        {
-            "alias": "dev-master",
-            "alias_normalized": "9999999-dev",
-            "version": "dev-develop",
-            "package": "a15lam/php-wemo"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "a15lam/workspace": 20,
-        "a15lam/php-wemo": 20
+        "a15lam/php-iot": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

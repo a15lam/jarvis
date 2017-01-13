@@ -5,7 +5,7 @@ namespace a15lam\Jarvis;
 use \a15lam\Jarvis\Workspace as WS;
 use a15lam\PhpWemo\Contracts\DeviceInterface;
 use a15lam\PhpWemo\Devices\WemoBulb;
-use a15lam\PhpWemo\Discovery;
+use a15lam\PhpIot\Discovery;
 use a15lam\Workspace\Utility\ArrayFunc;
 
 class Engine
