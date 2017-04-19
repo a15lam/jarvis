@@ -6,7 +6,8 @@
         "off":"SUNRISE"
       },
       "plex":{
-        "host": "192.168.1.145",
+        "host": "192.168.1.185",
+        "token": "xxxxxxx",
         "port": 32400,
         "dim_on_pause":40,
         "player":"TV UN46C8000_USA"
@@ -21,7 +22,8 @@
         "off":"SUNRISE"
       },
       "plex":{
-        "host": "192.168.1.145",
+        "host": "192.168.1.185",
+        "token": "xxxxxxx",
         "port": 32400,
         "dim_on_pause":40,
         "player":"TV UN55F6300"

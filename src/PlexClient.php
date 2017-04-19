@@ -57,9 +57,10 @@ class PlexClient
 
             $port = ArrayFunc::get($config, 'port', static::PORT);
             $api = ArrayFunc::get($config, 'api', static::API);
+            $token = ArrayFunc::get($config, 'token');
         }
 
-        $this->url = 'http://' . $host . ':' . $port . '/' . $api;
+        $this->url = 'http://' . $host . ':' . $port . '/' . $api . '?X-Plex-Token=' . $token;
     }
 
     /**

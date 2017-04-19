@@ -13,17 +13,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/a15lam/php-iot.git",
-                "reference": "0372ca5c7a0f5c403316880824ccd6fdbeb605a4"
+                "reference": "46af512fff526cf22da7aa63bee9247baa562988"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/a15lam/php-iot/zipball/0372ca5c7a0f5c403316880824ccd6fdbeb605a4",
-                "reference": "0372ca5c7a0f5c403316880824ccd6fdbeb605a4",
+                "url": "https://api.github.com/repos/a15lam/php-iot/zipball/46af512fff526cf22da7aa63bee9247baa562988",
+                "reference": "46af512fff526cf22da7aa63bee9247baa562988",
                 "shasum": ""
             },
             "require": {
-                "a15lam/php-wemo": "dev-master",
-                "a15lam/workspace": "0.1.0",
+                "a15lam/php-wemo": "~0.2.0",
+                "a15lam/workspace": "~0.1.0",
                 "php": ">=5.6"
             },
             "type": "library",
@@ -50,20 +50,20 @@
                 "smart",
                 "sonoff"
             ],
-            "time": "2017-01-13 05:07:23"
+            "time": "2017-03-14 21:32:34"
         },
         {
             "name": "a15lam/php-wemo",
-            "version": "dev-master",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/a15lam/php-wemo.git",
-                "reference": "54dcb838d5b9beffdf775d0e8c0a93aa1d4871fc"
+                "reference": "ef6bb61319ffd8ce69d6a4173410eb33984bbc39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/a15lam/php-wemo/zipball/54dcb838d5b9beffdf775d0e8c0a93aa1d4871fc",
-                "reference": "54dcb838d5b9beffdf775d0e8c0a93aa1d4871fc",
+                "url": "https://api.github.com/repos/a15lam/php-wemo/zipball/ef6bb61319ffd8ce69d6a4173410eb33984bbc39",
+                "reference": "ef6bb61319ffd8ce69d6a4173410eb33984bbc39",
                 "shasum": ""
             },
             "require": {
@@ -94,7 +94,7 @@
                 "php-wemo",
                 "soap"
             ],
-            "time": "2017-01-13 04:48:17"
+            "time": "2017-03-02 04:57:49"
         },
         {
             "name": "a15lam/workspace",
@@ -322,16 +322,16 @@
         },
         {
             "name": "react/datagram",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/datagram.git",
-                "reference": "c7725b3b30cb3081ed62c707308c1029d053b688"
+                "reference": "72949abb00b554f217b52697e2b74a5012c34dd5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/datagram/zipball/c7725b3b30cb3081ed62c707308c1029d053b688",
-                "reference": "c7725b3b30cb3081ed62c707308c1029d053b688",
+                "url": "https://api.github.com/repos/reactphp/datagram/zipball/72949abb00b554f217b52697e2b74a5012c34dd5",
+                "reference": "72949abb00b554f217b52697e2b74a5012c34dd5",
                 "shasum": ""
             },
             "require": {
@@ -372,27 +372,32 @@
                 "server",
                 "udp"
             ],
-            "time": "2016-03-19 11:59:13"
+            "time": "2017-01-23 20:47:30"
         },
         {
             "name": "react/dns",
-            "version": "v0.4.3",
+            "version": "v0.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/dns.git",
-                "reference": "751b3129556e04944f164e3556a20ca6e201e459"
+                "reference": "86d3da64ebfbecddf6b940c6e69daa67c0f21a05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/dns/zipball/751b3129556e04944f164e3556a20ca6e201e459",
-                "reference": "751b3129556e04944f164e3556a20ca6e201e459",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/86d3da64ebfbecddf6b940c6e69daa67c0f21a05",
+                "reference": "86d3da64ebfbecddf6b940c6e69daa67c0f21a05",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "react/cache": "~0.4.0|~0.3.0",
                 "react/promise": "~2.1|~1.2",
-                "react/socket": "~0.4.0|~0.3.0"
+                "react/promise-timer": "~1.1",
+                "react/socket": "^0.7 || ^0.6 || ^0.5 || ^0.4.4",
+                "react/stream": "^0.6 || ^0.5 || ^0.4.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0 || ^4.8.10"
             },
             "type": "library",
             "autoload": {
@@ -404,12 +409,12 @@
             "license": [
                 "MIT"
             ],
-            "description": "Async DNS resolver.",
+            "description": "Async DNS resolver for ReactPHP",
             "keywords": [
                 "dns",
                 "dns-resolver"
             ],
-            "time": "2016-08-01 10:09:07"
+            "time": "2017-04-16 11:20:57"
         },
         {
             "name": "react/event-loop",
@@ -457,20 +462,23 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.5.0",
+            "version": "v2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "2760f3898b7e931aa71153852dcd48a75c9b95db"
+                "reference": "62785ae604c8d69725d693eb370e1d67e94c4053"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/2760f3898b7e931aa71153852dcd48a75c9b95db",
-                "reference": "2760f3898b7e931aa71153852dcd48a75c9b95db",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/62785ae604c8d69725d693eb370e1d67e94c4053",
+                "reference": "62785ae604c8d69725d693eb370e1d67e94c4053",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
             },
             "type": "library",
             "autoload": {
@@ -496,32 +504,85 @@
                 "promise",
                 "promises"
             ],
-            "time": "2016-12-22 14:09:01"
+            "time": "2017-03-25 12:08:31"
         },
         {
-            "name": "react/socket",
-            "version": "v0.4.5",
+            "name": "react/promise-timer",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/reactphp/socket.git",
-                "reference": "32385d71f84c4a26ea577cb91f1220decb440dce"
+                "url": "https://github.com/reactphp/promise-timer.git",
+                "reference": "ddedc67bfd7f579fc83e66ff67e3564b179297dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/32385d71f84c4a26ea577cb91f1220decb440dce",
-                "reference": "32385d71f84c4a26ea577cb91f1220decb440dce",
+                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/ddedc67bfd7f579fc83e66ff67e3564b179297dd",
+                "reference": "ddedc67bfd7f579fc83e66ff67e3564b179297dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3",
+                "react/event-loop": "~0.4.0|~0.3.0",
+                "react/promise": "~2.1|~1.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\Promise\\Timer\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Lück",
+                    "email": "christian@lueck.tv"
+                }
+            ],
+            "description": "Trivial timeout implementation for Promises",
+            "homepage": "https://github.com/react/promise-timer",
+            "keywords": [
+                "async",
+                "event-loop",
+                "promise",
+                "reactphp",
+                "timeout",
+                "timer"
+            ],
+            "time": "2016-12-27 08:12:19"
+        },
+        {
+            "name": "react/socket",
+            "version": "v0.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/socket.git",
+                "reference": "57e3262b4b6098f7343cf16df393099dad5d5f11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/57e3262b4b6098f7343cf16df393099dad5d5f11",
+                "reference": "57e3262b4b6098f7343cf16df393099dad5d5f11",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "~2.0|~1.0",
                 "php": ">=5.3.0",
+                "react/dns": "0.4.*|0.3.*",
                 "react/event-loop": "0.4.*|0.3.*",
-                "react/promise": "^2.0 || ^1.1",
-                "react/stream": "^0.4.5"
+                "react/promise": "^2.1 || ^1.2",
+                "react/promise-timer": "~1.0",
+                "react/stream": "^0.6 || ^0.5 || ^0.4.5"
             },
             "require-dev": {
                 "clue/block-react": "^1.1",
-                "react/socket-client": "^0.5.1"
+                "phpunit/phpunit": "~4.8",
+                "react/stream": "^0.6"
             },
             "type": "library",
             "autoload": {
@@ -533,24 +594,28 @@
             "license": [
                 "MIT"
             ],
-            "description": "Async, streaming plaintext TCP/IP and secure TLS socket server for React PHP",
+            "description": "Async, streaming plaintext TCP/IP and secure TLS socket server and client connections for ReactPHP",
             "keywords": [
-                "Socket"
+                "Connection",
+                "Socket",
+                "async",
+                "reactphp",
+                "stream"
             ],
-            "time": "2017-01-08 11:36:16"
+            "time": "2017-04-10 20:52:43"
         },
         {
             "name": "react/stream",
-            "version": "v0.4.5",
+            "version": "v0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/stream.git",
-                "reference": "23389503012e1ab721ad498a5a1f4b39f7a43c00"
+                "reference": "b68463756d8be851829b7a9de8200c9d19eb997e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/stream/zipball/23389503012e1ab721ad498a5a1f4b39f7a43c00",
-                "reference": "23389503012e1ab721ad498a5a1f4b39f7a43c00",
+                "url": "https://api.github.com/repos/reactphp/stream/zipball/b68463756d8be851829b7a9de8200c9d19eb997e",
+                "reference": "b68463756d8be851829b7a9de8200c9d19eb997e",
                 "shasum": ""
             },
             "require": {
@@ -559,6 +624,7 @@
             },
             "require-dev": {
                 "clue/stream-filter": "~1.2",
+                "phpunit/phpunit": "^5.0 || ^4.8.10",
                 "react/event-loop": "^0.4|^0.3",
                 "react/promise": "^2.0|^1.0"
             },
@@ -576,12 +642,18 @@
             "license": [
                 "MIT"
             ],
-            "description": "Basic readable and writable stream interfaces that support piping.",
+            "description": "Event-driven readable and writable streams for non-blocking I/O in ReactPHP",
             "keywords": [
+                "event-driven",
+                "io",
+                "non-blocking",
                 "pipe",
-                "stream"
+                "reactphp",
+                "readable",
+                "stream",
+                "writable"
             ],
-            "time": "2016-11-13 17:06:02"
+            "time": "2017-03-26 18:02:15"
         },
         {
             "name": "vlucas/phpdotenv",
