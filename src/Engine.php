@@ -69,35 +69,7 @@ class Engine
      */
     protected function initRules(array $rules)
     {
-        foreach ($rules as $k => $rule) {
-            $control = ArrayFunc::get($rule, 'control');
-            if (!empty($control)) {
-                $time = ArrayFunc::get($control, 'time');
-                if (!empty($time)) {
-                    $on = ArrayFunc::get($time, 'on');
-                    $off = ArrayFunc::get($time, 'off');
-
-                    if (empty($on) || empty($off)) {
-                        throw new \Exception('Invalid time configuration found in rules.');
-                    }
-
-                    if ($on === static::SUNRISE) {
-                        $on = $this->getSunriseTime();
-                    } elseif ($on === static::SUNSET) {
-                        $on = $this->getSunsetTime();
-                    }
-
-                    if ($off === static::SUNRISE) {
-                        $off = $this->getSunriseTime();
-                    } elseif ($off === static::SUNSET) {
-                        $off = $this->getSunsetTime();
-                    }
-
-                    $rules[$k]['control']['time']['on'] = $on;
-                    $rules[$k]['control']['time']['off'] = $off;
-                }
-            }
-        }
+        // Loop through the $rules and initialize as needed.
         $this->rules = $rules;
         WS::log()->info('Initialized all rules.');
     }
@@ -240,6 +212,22 @@ class Engine
 
         $on = ArrayFunc::get($time, 'on');
         $off = ArrayFunc::get($time, 'off');
+
+        if ($on === static::SUNRISE) {
+            $on = $this->getSunriseTime();
+            WS::log()->debug('SUNRISE "on" time for rule ' . $ruleNum . ':' . $on);
+        } elseif ($on === static::SUNSET) {
+            $on = $this->getSunsetTime();
+            WS::log()->debug('SUNSET "on" time for rule ' . $ruleNum . ':' . $on);
+        }
+
+        if ($off === static::SUNRISE) {
+            $off = $this->getSunriseTime();
+            WS::log()->debug('SUNRISE "off" time for rule ' . $ruleNum . ':' . $off);
+        } elseif ($off === static::SUNSET) {
+            $off = $this->getSunsetTime();
+            WS::log()->debug('SUNSET "off" time for rule ' . $ruleNum . ':' . $off);
+        }
 
         if (empty($on) || empty($off)) {
             throw new \Exception('Invalid time configuration found in rules.');

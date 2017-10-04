@@ -23,7 +23,7 @@
   "require": {
     "php": ">=5.5",
     "a15lam/workspace": "~0.1.0",
-    "a15lam/php-iot": "dev-master"
+    "a15lam/php-iot": "~0.1.0"
   },
   "autoload": {
     "psr-4": {
