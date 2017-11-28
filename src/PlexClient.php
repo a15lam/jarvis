@@ -75,14 +75,14 @@ class PlexClient
             $options = [
                 CURLOPT_URL            => $this->url,
                 CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_VERBOSE        => false
+                CURLOPT_VERBOSE        => false,
+                CURLOPT_HTTPHEADER     => ["Accept: application/json"]
             ];
 
             $ch = curl_init();
             curl_setopt_array($ch, $options);
             $response = curl_exec($ch);
-            $response = DataFormat::xmlToArray($response, 1);
-
+            $response = json_decode($response, true);
             return $response;
         } catch (\Exception $e) {
             throw new \Exception("Failed to make curl request " . $e->getMessage());
@@ -106,13 +106,13 @@ class PlexClient
                         $status['MediaContainer']['Video'] : null : null : null;
 
             if (!empty($info)) {
-                if (isset($info['Player_attr'])) {
-                    $out[] = $info['Player_attr'];
+                if (isset($info['Player'])) {
+                    $out[] = $info['Player'];
                 } else {
                     $f = true;
                     for ($i = 0; $f === true; $i++) {
-                        if (isset($info[$i]['Player_attr'])) {
-                            $out[] = $info[$i]['Player_attr'];
+                        if (isset($info[$i]['Player'])) {
+                            $out[] = $info[$i]['Player'];
                         } else {
                             $f = false;
                         }
