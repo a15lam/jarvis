@@ -100,10 +100,15 @@ class PlexClient
         $out = [];
 
         if (is_array($status)) {
-            $info = (isset($status['MediaContainer'])) ?
-                (isset($status['MediaContainer']['Video'])) ?
-                    (isset($status['MediaContainer']['Video'])) ?
-                        $status['MediaContainer']['Video'] : null : null : null;
+            $info = null;
+            if(isset($status['MediaContainer'])) {
+                if(isset($status['MediaContainer']['Metadata'])) {
+                    $info = $status['MediaContainer']['Metadata'];
+                }
+                elseif(isset($status['MediaContainer']['Video'])) {
+                    $info = $status['MediaContainer']['Video'];
+                }
+            }
 
             if (!empty($info)) {
                 if (isset($info['Player'])) {
