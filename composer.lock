@@ -4,7 +4,6 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4c20611a48a59344d526f3d3575210d2",
     "content-hash": "4e07bf6d2baece2504424b9697f703ae",
     "packages": [
         {
@@ -51,7 +50,7 @@
                 "smart",
                 "sonoff"
             ],
-            "time": "2017-07-02 04:46:09"
+            "time": "2017-07-02T04:46:09+00:00"
         },
         {
             "name": "a15lam/php-wemo",
@@ -95,20 +94,20 @@
                 "php-wemo",
                 "soap"
             ],
-            "time": "2017-06-10 17:44:23"
+            "time": "2017-06-10T17:44:23+00:00"
         },
         {
             "name": "a15lam/workspace",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/a15lam/workspace.git",
-                "reference": "8fce0460ca9ca149666c1b2a4a9e8cee59361f25"
+                "reference": "a17508b47b2db11a6e203a3cbd43b886a85e25aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/a15lam/workspace/zipball/8fce0460ca9ca149666c1b2a4a9e8cee59361f25",
-                "reference": "8fce0460ca9ca149666c1b2a4a9e8cee59361f25",
+                "url": "https://api.github.com/repos/a15lam/workspace/zipball/a17508b47b2db11a6e203a3cbd43b886a85e25aa",
+                "reference": "a17508b47b2db11a6e203a3cbd43b886a85e25aa",
                 "shasum": ""
             },
             "require": {
@@ -132,26 +131,26 @@
                 }
             ],
             "description": "A library of commonly used classes and utilities.",
-            "homepage": "https://a15lam.github.io/workspace/",
+            "homepage": "https://github.com/a15lam/workspace/",
             "keywords": [
                 "common",
                 "framework",
                 "utility"
             ],
-            "time": "2017-01-13 01:40:22"
+            "time": "2018-06-23T15:48:47+00:00"
         },
         {
             "name": "clue/multicast-react",
-            "version": "v0.2.0",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/clue/php-multicast-react.git",
-                "reference": "1e5b10b95ce65cc36178e8cedb5361922a7d0e89"
+                "reference": "fb6679f503b60670a39906c6e52a2c6bd1cb9115"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/php-multicast-react/zipball/1e5b10b95ce65cc36178e8cedb5361922a7d0e89",
-                "reference": "1e5b10b95ce65cc36178e8cedb5361922a7d0e89",
+                "url": "https://api.github.com/repos/clue/php-multicast-react/zipball/fb6679f503b60670a39906c6e52a2c6bd1cb9115",
+                "reference": "fb6679f503b60670a39906c6e52a2c6bd1cb9115",
                 "shasum": ""
             },
             "require": {
@@ -191,27 +190,30 @@
                 "reactphp",
                 "udp"
             ],
-            "time": "2015-03-26 21:27:01"
+            "time": "2016-03-07T10:01:04+00:00"
         },
         {
             "name": "clue/ssdp-react",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/clue/php-ssdp-react.git",
-                "reference": "85e3f1b77d3ffacf0c1cae5af6a88bc0ffa1745b"
+                "url": "https://github.com/clue/reactphp-ssdp.git",
+                "reference": "a0d51f63ba818b4d1cf1d1f4e66219a538822057"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/php-ssdp-react/zipball/85e3f1b77d3ffacf0c1cae5af6a88bc0ffa1745b",
-                "reference": "85e3f1b77d3ffacf0c1cae5af6a88bc0ffa1745b",
+                "url": "https://api.github.com/repos/clue/reactphp-ssdp/zipball/a0d51f63ba818b4d1cf1d1f4e66219a538822057",
+                "reference": "a0d51f63ba818b4d1cf1d1f4e66219a538822057",
                 "shasum": ""
             },
             "require": {
-                "clue/multicast-react": "~0.2.0",
+                "clue/multicast-react": "^1.0 || ^0.2",
                 "php": ">=5.3",
-                "react/event-loop": "~0.4.0|~0.3.0",
-                "react/promise": "~2.0|~1.0"
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3",
+                "react/promise": "^2.0 || ^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0 || ^5.7 || ^4.8.35"
             },
             "type": "library",
             "autoload": {
@@ -229,17 +231,17 @@
                     "email": "christian@lueck.tv"
                 }
             ],
-            "description": "Async Simple Service Discovery Protocol (SSDP), part of Univeral Plug and Play (UPnP)",
-            "homepage": "https://github.com/clue/php-ssdp-react",
+            "description": "Async Simple Service Discovery Protocol (SSDP), built on top of ReactPHP.",
+            "homepage": "https://github.com/clue/reactphp-ssdp",
             "keywords": [
                 "Simple Service Discovery Protocol",
-                "Univeral Plug and Play",
+                "Universal Plug and Play",
                 "async",
                 "reactphp",
                 "ssdp",
                 "upnp"
             ],
-            "time": "2015-03-31 22:26:20"
+            "time": "2018-07-29 16:18:29"
         },
         {
             "name": "evenement/evenement",
@@ -282,60 +284,66 @@
                 "event-dispatcher",
                 "event-emitter"
             ],
-            "time": "2017-07-23 21:35:13"
+            "time": "2017-07-23T21:35:13+00:00"
         },
         {
             "name": "react/cache",
-            "version": "v0.4.1",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/cache.git",
-                "reference": "558f614891341b1d817a8cdf9a358948ec49638f"
+                "reference": "7d7da7fb7574d471904ba357b39bbf110ccdbf66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/cache/zipball/558f614891341b1d817a8cdf9a358948ec49638f",
-                "reference": "558f614891341b1d817a8cdf9a358948ec49638f",
+                "url": "https://api.github.com/repos/reactphp/cache/zipball/7d7da7fb7574d471904ba357b39bbf110ccdbf66",
+                "reference": "7d7da7fb7574d471904ba357b39bbf110ccdbf66",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "react/promise": "~2.0|~1.1"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
+            },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "React\\Cache\\": "src\\"
+                    "React\\Cache\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "description": "Async caching.",
+            "description": "Async, Promise-based cache interface for ReactPHP",
             "keywords": [
-                "cache"
+                "cache",
+                "caching",
+                "promise",
+                "reactphp"
             ],
-            "time": "2016-02-25 18:17:16"
+            "time": "2018-06-25T12:52:40+00:00"
         },
         {
             "name": "react/datagram",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/datagram.git",
-                "reference": "80fd8d8620e3d25d0074592555d998994ea84faf"
+                "reference": "70babf56420bd07c4b4a8a6d8f9050d16e51e73d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/datagram/zipball/80fd8d8620e3d25d0074592555d998994ea84faf",
-                "reference": "80fd8d8620e3d25d0074592555d998994ea84faf",
+                "url": "https://api.github.com/repos/reactphp/datagram/zipball/70babf56420bd07c4b4a8a6d8f9050d16e51e73d",
+                "reference": "70babf56420bd07c4b4a8a6d8f9050d16e51e73d",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "^3.0 || ^2.0 || ^1.0",
                 "php": ">=5.3",
-                "react/dns": "^0.4.11",
+                "react/dns": "^0.4.13",
                 "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3",
                 "react/promise": "~2.1|~1.2"
             },
@@ -371,34 +379,33 @@
                 "server",
                 "udp"
             ],
-            "time": "2017-09-25 12:16:09"
+            "time": "2018-02-28T09:34:17+00:00"
         },
         {
             "name": "react/dns",
-            "version": "v0.4.11",
+            "version": "v0.4.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/dns.git",
-                "reference": "8558bba4f2784aa997670d15fc6f7461a8eb4e53"
+                "reference": "0f30c6ceb71504d359d51132a97e1703051f1589"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/dns/zipball/8558bba4f2784aa997670d15fc6f7461a8eb4e53",
-                "reference": "8558bba4f2784aa997670d15fc6f7461a8eb4e53",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/0f30c6ceb71504d359d51132a97e1703051f1589",
+                "reference": "0f30c6ceb71504d359d51132a97e1703051f1589",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
-                "react/cache": "~0.4.0|~0.3.0",
+                "react/cache": "^1.0 || ^0.6 || ^0.5 || ^0.4 || ^0.3",
                 "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
                 "react/promise": "^2.1 || ^1.2.1",
                 "react/promise-timer": "^1.2",
-                "react/socket": "^1.0 || ^0.8 || ^0.7 || ^0.6 || ^0.5 || ^0.4.4",
                 "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.5"
             },
             "require-dev": {
                 "clue/block-react": "^1.2",
-                "phpunit/phpunit": "^5.0 || ^4.8.10"
+                "phpunit/phpunit": "^7.0 || ^6.4 || ^5.7 || ^4.8.35"
             },
             "type": "library",
             "autoload": {
@@ -417,7 +424,7 @@
                 "dns-resolver",
                 "reactphp"
             ],
-            "time": "2017-08-25 08:22:48"
+            "time": "2019-04-01T07:31:55+00:00"
         },
         {
             "name": "react/event-loop",
@@ -459,20 +466,20 @@
                 "asynchronous",
                 "event-loop"
             ],
-            "time": "2017-04-27 10:56:23"
+            "time": "2017-04-27T10:56:23+00:00"
         },
         {
             "name": "react/promise",
-            "version": "v2.5.1",
+            "version": "v2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "62785ae604c8d69725d693eb370e1d67e94c4053"
+                "reference": "31ffa96f8d2ed0341a57848cbb84d88b89dd664d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/62785ae604c8d69725d693eb370e1d67e94c4053",
-                "reference": "62785ae604c8d69725d693eb370e1d67e94c4053",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/31ffa96f8d2ed0341a57848cbb84d88b89dd664d",
+                "reference": "31ffa96f8d2ed0341a57848cbb84d88b89dd664d",
                 "shasum": ""
             },
             "require": {
@@ -505,29 +512,29 @@
                 "promise",
                 "promises"
             ],
-            "time": "2017-03-25 12:08:31"
+            "time": "2019-01-07T21:25:54+00:00"
         },
         {
             "name": "react/promise-timer",
-            "version": "v1.2.0",
+            "version": "v1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise-timer.git",
-                "reference": "3bc527fbd1201a193ab41c19b9a770d71a3514af"
+                "reference": "35fb910604fd86b00023fc5cda477c8074ad0abc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/3bc527fbd1201a193ab41c19b9a770d71a3514af",
-                "reference": "3bc527fbd1201a193ab41c19b9a770d71a3514af",
+                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/35fb910604fd86b00023fc5cda477c8074ad0abc",
+                "reference": "35fb910604fd86b00023fc5cda477c8074ad0abc",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3",
                 "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
-                "react/promise": "~2.1|~1.2"
+                "react/promise": "^2.7.0 || ^1.2.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.0 || ^4.8"
+                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
             },
             "type": "library",
             "autoload": {
@@ -535,7 +542,7 @@
                     "React\\Promise\\Timer\\": "src/"
                 },
                 "files": [
-                    "src/functions.php"
+                    "src/functions_include.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -548,8 +555,8 @@
                     "email": "christian@lueck.tv"
                 }
             ],
-            "description": "Trivial timeout implementation for Promises",
-            "homepage": "https://github.com/react/promise-timer",
+            "description": "A trivial implementation of timeouts for Promises, built on top of ReactPHP.",
+            "homepage": "https://github.com/reactphp/promise-timer",
             "keywords": [
                 "async",
                 "event-loop",
@@ -558,80 +565,30 @@
                 "timeout",
                 "timer"
             ],
-            "time": "2017-08-08 16:30:19"
-        },
-        {
-            "name": "react/socket",
-            "version": "v0.8.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/socket.git",
-                "reference": "ce2b577c2d69ee071c3f9e552942c320caa87e0a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/ce2b577c2d69ee071c3f9e552942c320caa87e0a",
-                "reference": "ce2b577c2d69ee071c3f9e552942c320caa87e0a",
-                "shasum": ""
-            },
-            "require": {
-                "evenement/evenement": "^3.0 || ^2.0 || ^1.0",
-                "php": ">=5.3.0",
-                "react/dns": "^0.4.11",
-                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
-                "react/promise": "^2.1 || ^1.2",
-                "react/promise-timer": "~1.0",
-                "react/stream": "^1.0 || ^0.7.1"
-            },
-            "require-dev": {
-                "clue/block-react": "^1.1",
-                "phpunit/phpunit": "~4.8"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "React\\Socket\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Async, streaming plaintext TCP/IP and secure TLS socket server and client connections for ReactPHP",
-            "keywords": [
-                "Connection",
-                "Socket",
-                "async",
-                "reactphp",
-                "stream"
-            ],
-            "time": "2017-09-16 17:16:49"
+            "time": "2019-03-27T18:10:32+00:00"
         },
         {
             "name": "react/stream",
-            "version": "v0.7.3",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/stream.git",
-                "reference": "5cc7bec91dc3f6ad123a81602489b82fdb180090"
+                "reference": "50426855f7a77ddf43b9266c22320df5bf6c6ce6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/stream/zipball/5cc7bec91dc3f6ad123a81602489b82fdb180090",
-                "reference": "5cc7bec91dc3f6ad123a81602489b82fdb180090",
+                "url": "https://api.github.com/repos/reactphp/stream/zipball/50426855f7a77ddf43b9266c22320df5bf6c6ce6",
+                "reference": "50426855f7a77ddf43b9266c22320df5bf6c6ce6",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "^3.0 || ^2.0 || ^1.0",
                 "php": ">=5.3.8",
-                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3"
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5"
             },
             "require-dev": {
                 "clue/stream-filter": "~1.2",
-                "phpunit/phpunit": "^5.0 || ^4.8.10"
-            },
-            "suggest": {
-                "react/event-loop": "^0.4"
+                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
             },
             "type": "library",
             "autoload": {
@@ -654,32 +611,91 @@
                 "stream",
                 "writable"
             ],
-            "time": "2017-08-05 09:16:09"
+            "time": "2019-01-01T16:15:09+00:00"
         },
         {
-            "name": "vlucas/phpdotenv",
-            "version": "v2.4.0",
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "3cc116adbe4b11be5ec557bf1d24dc5e3a21d18c"
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "82ebae02209c21113908c229e9883c419720738a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/3cc116adbe4b11be5ec557bf1d24dc5e3a21d18c",
-                "reference": "3cc116adbe4b11be5ec557bf1d24dc5e3a21d18c",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/82ebae02209c21113908c229e9883c419720738a",
+                "reference": "82ebae02209c21113908c229e9883c419720738a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+                "php": ">=5.3.3"
             },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8 || ^5.0"
+            "suggest": {
+                "ext-ctype": "For best performance"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.4-dev"
+                    "dev-master": "1.11-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2019-02-06T07:57:58+00:00"
+        },
+        {
+            "name": "vlucas/phpdotenv",
+            "version": "v2.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vlucas/phpdotenv.git",
+                "reference": "2a7dcf7e3e02dc5e701004e51a6f304b713107d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/2a7dcf7e3e02dc5e701004e51a6f304b713107d5",
+                "reference": "2a7dcf7e3e02dc5e701004e51a6f304b713107d5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9",
+                "symfony/polyfill-ctype": "^1.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35 || ^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
                 }
             },
             "autoload": {
@@ -689,7 +705,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3-Clause-Attribution"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -704,7 +720,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2016-09-01 10:05:43"
+            "time": "2019-01-29T11:11:52+00:00"
         }
     ],
     "packages-dev": [],

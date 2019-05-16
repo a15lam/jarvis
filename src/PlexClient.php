@@ -108,6 +108,9 @@ class PlexClient
                 elseif(isset($status['MediaContainer']['Video'])) {
                     $info = $status['MediaContainer']['Video'];
                 }
+		elseif(isset($status['MediaContainer'][0]['Metadata'])) {
+                    $info = $status['MediaContainer'][0]['Metadata'];
+                }
             }
 
             if (!empty($info)) {
